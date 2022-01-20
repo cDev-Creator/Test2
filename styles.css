@@ -18,7 +18,7 @@
 
  @font-face {
     /*  src: url(beon.ttf); */
-    src: url(~.ttf); 
+    src: url(score-buttons.ttf); 
     font-family: zero;
  }
 
@@ -57,26 +57,6 @@ body {
     overflow: hidden;
     
 }
-
-
-
-/* .title {
-    font-family: rat;
-    font-weight: lighter;
-    display: flex;
-    justify-content: center;
-    font-family: 'Big Shoulders Inline Text', cursive; 
-    font-size: 70px;
-
-    color:rgb(255, 255, 255);
-    
-  
-} */
-
-/* .logo-container{
-    display: flex;
-    justify-content: center;
-} */
 
 .logo {
     font-family: logo;
@@ -167,11 +147,9 @@ body {
     }
   }
  */
- 
-.lists {
-    color:white;
-}
-li, .task-list {
+
+
+li, .word-list {
     padding-top: 15px;
 }
 
@@ -181,20 +159,26 @@ li, .task-list {
     color: rgb(73, 73, 73);
 }
 
-div.lists {
+.lists {
+    color:white;
     display: flex;
+    flex-direction: column;
+    align-items:center;
     justify-content:center;
     padding-bottom: 80px;
     
 }
 
 
- .all-tasks {
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
+ .all-words {
+   /*  display: flex;
+    flex-direction: column; */
+   /*  margin-right: 20px; */
+
+    /* margin-left: 40px; */
+    margin-left: 100px;
     width:300px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 } 
 
 .list-name {
@@ -206,7 +190,7 @@ div.lists {
     padding-top: 10px;
 }
 
-.todo-header {
+.word-header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -216,18 +200,18 @@ div.lists {
     font-size: 18px;
 
 }
-.task-count {
+.word-count {
     margin-top: 0px;
     white-space: nowrap;
     color:rgba(82, 82, 82, 0.772);
 }
 
-.todo-list {
-    width: 200px;
+.all-words-list {
+    width: 330px;
     margin-right: 20px;
 }
 
-.todo-body {
+.words-body {
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
@@ -237,12 +221,12 @@ div.lists {
     border-bottom-right-radius: 30px;
 }
 
-.task {
+.word {
     font-size: 25px;
     margin-bottom:10px;
 }
 
-.new-task-creator {
+.new-word-creator {
     margin-top: 30px;
     margin-left: 5px;
 }
