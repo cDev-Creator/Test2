@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+    
+
+    
+    
+    <title>Guess It</title>
+</head>
+<body id="wrapper">
+
+    <div class="content-container">
+
+       <!--  <div class="neon-wrapper"> -->
+         <!--    <div class="logo-container"> -->
+                <div class="logo">
+                    <b>G<span>ue</span>ss<span> it</span></b></div>
+
+                </div>
+               
+        <!--     </div>  -->
+      <!--   </div> -->
+
+       
+
+      <!--   <div class='title-score'>
+            <div class='neon-wrapper'>
+                <div class='neon-text' >
+                    <h1 class="title glow">Guess it</h1>
+                </div>
+            </div> -->
+            
+           
+
+        </div>
+       
+        
+        <div class= "game">
+          
+            <div class="scoreboard-container">
+                <div class="scoreboard">
+                    <h3 id="team1-score">0</h3>
+                    <h3 id="team2-score">0</h3>
+                    
+                    <h4 class="winner"></h4>
+                </div>
+            </div>
+   
+            <div class="countdown-container">
+                <p id="countdown"></p>
+            </div>
+           
+            <audio id="game-sound"></audio>
+            <audio id="timeout-sound"></audio>
+            <audio id="win-sound"></audio>
+ 
+           
+                <div class="categories">
+                    <ul class= "category-selection" category-names ></ul>
+                    
+                    </ul>
+                </div>
+    
+            <!-- <button id="category-change-button">category</button></br> -->
+            <div class= "center-button">
+            <button id="selection-button">select</button>
+            </div>
+            
+            <div class="random-word-container">
+                <div class="random-word" random-word> </div>
+            </div>
+            <div class="random-word-button-container">
+                <button id="random-word-button" random-word-button>start</button>
+            </div>
+          
+            
+           
+            <div class="points-buttons">
+                <button id="team1-button"  team-1-button></button>
+                <button id="team2-button" team-2-button></button>
+            </div>
+
+        </div>
+
+         <div class="show-button-container">
+            <button id='show-button' onclick='hideWordAdder()'>add words</button>
+         </div>
+        
+
+
+        <div class="lists">
+            
+            <div class="all-tasks">
+                <ul class="category-list" data-lists>
+
+                </ul>
+
+                
+
+
+                
+              <div class="new-list-container">
+                    <form action="" data-new-list-form> 
+                        <input type="text" 
+                        class="new-list" 
+                        placeholder="new category" 
+                        data-new-list-input>
+
+                        <button class="plus-button list">+</button>
+                    </form>  
+                </div>
+            </div>
+            
+
+            <div class="todo-list" data-lists-display-container>
+                
+                <div class="todo-header">
+                    <h2 class="list-title" data-list-title></h2>
+                     <div class="task-list"></div>
+                     <p class="task-count" data-list-count></p>
+                </div>
+                <div class="todo-body">
+                    <div class="tasks" data-tasks>
+            
+                    </div>
+                    <div class="new-task-creator">
+                        <form action="" data-new-task-form>
+                            <input type="text" data-new-task-input class="new-list" placeholder="word">
+                            <button class="plus-button task">+</button>
+                         </form>
+                    </div>
+                </div>
+                <div class="delete">
+                    <button class="btn delete" data-clear-complete-tasks-button>Clear Deleted Words</button>
+                    <button class="btn delete" data-delete-list-button>Delete Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id ="task-template">
+        <div class="task">
+            <input type="checkbox">
+            <label></label>             
+        </div>
+    </template>
+
+
+</body>
+
+
+
+
+
+
+
+<script defer src= "app.js"></script>
+</html>
