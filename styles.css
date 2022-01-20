@@ -193,6 +193,7 @@ li, .task-list {
 div.lists {
     display: flex;
     justify-content:center;
+    padding-bottom: 50px;
     
 }
 
@@ -205,8 +206,8 @@ div.lists {
     margin-bottom: 30px;
 } 
 
-.task-list {
-    font-size: 20px;
+.list-name {
+    font-size: 25px;
     margin-top: 5px;
 }
 
@@ -221,13 +222,13 @@ div.lists {
     background-color: rgb(168, 168, 168);
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    font-size: 17px;
+    font-size: 18px;
 
 }
 .task-count {
     margin-top: 0px;
     white-space: nowrap;
-    color:rgba(109, 109, 109, 0.772);
+    color:rgba(82, 82, 82, 0.772);
 }
 
 .todo-list {
@@ -246,7 +247,7 @@ div.lists {
 }
 
 .task {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom:10px;
 }
 
@@ -303,7 +304,7 @@ input[type=text] {
     display: flex;
     justify-content: center;
     width: 100%;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin-top: 10px;
 }
 
@@ -321,7 +322,7 @@ li.category-selection {
     justify-content:center;
     /* border: 5px solid rgba(0, 0, 255, 0.1); */
     list-style: none;
-    font-size: 20px;
+    font-size: 25px;
     padding: 10px 5px;
     margin: 10px;
     width: 100px;
@@ -428,7 +429,8 @@ li.category-selection {
 .points-buttons { 
     display: flex;
     justify-content: center;
-    gap:200px;
+    /* gap:200px; */
+    border: 1px solid rgb(39, 255, 133);
     margin-top: 150px;
     
 }
@@ -438,11 +440,12 @@ li.category-selection {
     border: none;
     padding: 5px;
     border-radius: 50px;
-    scale: 1.8;
+    scale: 2.5;
     color:white;
 }
 
 #team1-button {
+    margin-right: 100px;
     background-color: blue;
     box-shadow:
     0 0 0.1vw  0.4vw #0015ff,   
@@ -454,6 +457,7 @@ li.category-selection {
 
 }
 #team2-button {
+    margin-left: 100px;
     background-color: red;
     box-shadow:
     0 0 0.1vw  0.4vw #ff0000,   
@@ -463,8 +467,5 @@ li.category-selection {
     inset 0 0 0.5vw  0.2vw #ff0000;
 
 }
-
-
-
 
 
