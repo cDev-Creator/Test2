@@ -32,7 +32,9 @@ const team2Score = document.getElementById('team2-score')
 const activeCategorySelection = document.querySelector('.active-category-selection')
 
 
-const winner = document.querySelector('.winner')
+const redWinner = document.getElementById('red-winner')
+const blueWinner = document.getElementById('blue-winner')
+
 const categorySelection = document.querySelector('.category-selection')
 const hiddenCategoryAdded = document.querySelector('.lists')
 const taskTemplate = document.getElementById('task-template')
@@ -69,6 +71,10 @@ const local_storage_list_id_key = 'task.selectedListId'
 let lists = JSON.parse(localStorage.getItem(local_storage_list_key)) || []
 
 let selectedListId = localStorage.getItem(local_storage_list_id_key)
+
+
+
+
 
 
 hiddenCategoryAdded.style.display = 'none'
@@ -399,6 +405,7 @@ var team2Points = 0
 
 function gameLoop() {
 
+
 let clickCounter = 0
 
 randomWordButton.addEventListener('click', e => { 
@@ -423,9 +430,9 @@ randomWordButton.addEventListener('click', e => {
         team1Points++
         
         team1Score.innerText = `${team1Points}`
-        if(team1Points === 3 || team1Points === 3 ) {
+        if(team1Points === 2 || team1Points === 2 ) {
             gameWinner()
-            resetButton.style.visibility = 'visible'
+            /* resetButton.style.visibility = 'visible' */
     
         }
         
@@ -448,7 +455,7 @@ randomWordButton.addEventListener('click', e => {
     team2Button.addEventListener('click', e => {
         team2Points++
         team2Score.innerText = `${team2Points}`
-        if(team1Points === 3 || team2Points === 3 ) {
+        if(team1Points === 2 || team2Points === 2 ) {
             gameWinner()
            
     
@@ -466,14 +473,18 @@ randomWordButton.addEventListener('click', e => {
         clickCounter = 0
         randomWordButton.innerHTML = 'start'
     })
-    
+
+    redWinner.style.display = 'none'
+    blueWinner.style.display = 'none' 
     function gameWinner() {
-        if (team1Points === 3) {
-            winner.innerText = `Team 1 wins`
+        if (team1Points === 2) {
+            blueWinner.style.display = 'flex'
+            
             winSound.play()
         }
-        else if (team2Points === 3) {
-            winner.innerText = `Team 2 wins`
+        else if (team2Points === 2) {
+            redWinner.style.display = 'flex'
+           
             winSound.play()
         }
        disableButtons() 
@@ -532,7 +543,7 @@ const gameSound = document.getElementById("game-sound")
 const winSound = document.getElementById("win-sound")
 
 timeoutSound.src = "http://soundbible.com/grab.php?id=1252&type=mp3"
-gameSound.src = "timesound.mp4"
+gameSound.src = "timersound.mp4"
 winSound.src = "win.mp3"
 timeoutSound.load()
 gameSound.load()
@@ -581,11 +592,11 @@ const renderTime = () => {
     if(remainingTime <= 20) {
         gameSound.playbackRate = 2.0
     }
-    if(remainingTime <= 15) {
+   /*  if(remainingTime <= 15) {
         gameSound.playbackRate = 2.5
-    }
+    } */
     if(remainingTime <= 10) {
-        gameSound.playbackRate = 3.0
+        gameSound.playbackRate = 2.3
     }
 
     if (remainingTime === 0) {
@@ -604,6 +615,7 @@ const renderTime = () => {
 
 
 }
+
 gameLoop()
 
 render()
