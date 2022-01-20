@@ -440,7 +440,8 @@ li.category-selection {
     border: none;
     padding: 5px;
     border-radius: 50px;
-    scale: 2.5;
+    width: 100px;
+    height: 100px;
     color:white;
 }
 
