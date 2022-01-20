@@ -2,14 +2,14 @@ const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')
 const newListInput = document.querySelector('[data-new-list-input]')
 const deleteListButton = document.querySelector('[data-delete-list-button]')
-const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]')
+const clearCompleteWordsButton = document.querySelector('[data-clear-complete-words-button]')
 
 const listsDisplayContainer = document.querySelector('[data-lists-display-container]')
 const listTitle = document.querySelector('[data-list-title]')
 const listCount = document.querySelector('[data-list-count]')
-const tasksContainer = document.querySelector('[data-tasks]')
-const newTaskForm = document.querySelector('[data-new-task-form]')
-const newTaskInput = document.querySelector('[data-new-task-input]')
+const wordsContainer = document.querySelector('[data-words]')
+const newWordForm = document.querySelector('[data-new-word-form]')
+const newWordInput = document.querySelector('[data-new-word-input]')
 
 
 const randomWord = document.querySelector('[random-word]')
@@ -37,7 +37,7 @@ const blueWinner = document.getElementById('blue-winner')
 
 const categorySelection = document.querySelector('.category-selection')
 const hiddenCategoryAdded = document.querySelector('.lists')
-const taskTemplate = document.getElementById('task-template')
+const wordTemplate = document.getElementById('word-template')
 
 
 
@@ -57,11 +57,11 @@ const showButton = document.getElementById('show-button')
 // to make a data attribute it must start with 'data-'
 
 // need key-value pairs to store locally
-// need to make namespace when storing locally, hence 'task.' added bc
+// need to make namespace when storing locally, hence 'word.' added bc
 // it prevents you from over-riding info already in local stroage or 
 // other websites from overriding my local storage keys
-const local_storage_list_key = 'task.lists'
-const local_storage_list_id_key = 'task.selectedListId'
+const local_storage_list_key = 'word.lists'
+const local_storage_list_id_key = 'word.selectedListId'
 
 
 
@@ -174,80 +174,16 @@ categoryNames.addEventListener('click', e => {
     }
 })  
 
-
-/* let clickCounter = 0
-
-categoryChangeButton.addEventListener('click', e =>{
-   
-clickCounter++
-const keys = lists.keys()
-    
-for (let x of keys) { 
-    console.log(x);
-} 
-console.log('asasas' +clickCounter)
-
-
-
-if(clickCounter >= lists.length) {
-    clickCounter = 0
-   // console.log(clickCounter)
-}
-
-   
-const names = lists.map(function (list) {
-    return list.name;
-});
-
-console.log(names)
-    
-    console.log(lists)
-
-    //console.log(lists[0].name)
-   // console.log(lists[1].name)
-   // console.log(lists[2].name)
-
-
-    //console.log(lists.length)
-
-
-   saveAndRender() 
-          
-}) */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-tasksContainer.addEventListener('click', e => {
+wordsContainer.addEventListener('click', e => {
 
     // if checkbox has been marked(input)
     if(e.target.tagName.toLowerCase() === 'input') { 
         const selectedList = lists.find(list => list.id === selectedListId)
-        const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
-        selectedTask.complete = e.target.checked
+        const selectedword = selectedList.words.find(word => word.id === e.target.id)
+        selectedword.complete = e.target.checked
         
         save()
-        taskCount(selectedList)
+        wordCount(selectedList)
     }
 })
 
@@ -258,10 +194,10 @@ deleteListButton.addEventListener('click', e => {
     saveAndRender()
 })
 
-clearCompleteTasksButton.addEventListener('click', e => {
+clearCompleteWordsButton.addEventListener('click', e => {
     const selectedList = lists.find(list => list.id === selectedListId)
-    // set task list to all tasks which have not been completed
-    selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+    // set word list to all words which have not been completed
+    selectedList.words = selectedList.words.filter(word => !word.complete)
     saveAndRender()
 })
 newListForm.addEventListener('submit', e => {
@@ -282,16 +218,16 @@ newListForm.addEventListener('submit', e => {
     saveAndRender()
 })
 
-newTaskForm.addEventListener('submit', e => {
+newWordForm.addEventListener('submit', e => {
     e.preventDefault();
-    const taskName = newTaskInput.value
-    if (taskName == null || taskName === '') return
-    const task = createTask(taskName)
+    const wordName = newWordInput.value
+    if (wordName == null || wordName === '') return
+    const word = createword(wordName)
     
-    newTaskInput.value = null
+    newWordInput.value = null
 
     const selectedList = lists.find(list => list.id === selectedListId)
-    selectedList.tasks.push(task)
+    selectedList.words.push(word)
 
     saveAndRender()
 }) 
@@ -299,11 +235,11 @@ newTaskForm.addEventListener('submit', e => {
 
 function createList(name) {
     // returns object, Date.now().toString() take the date and current tinme and convert them to a string to 
-    // give a unique identifier, name is set to the name and each list will have a set of tasks
-    return {id: Date.now().toString(), name: name, tasks:[] } 
+    // give a unique identifier, name is set to the name and each list will have a set of words
+    return {id: Date.now().toString(), name: name, words:[] } 
 }
 
-function createTask(name) {
+function createword(name) {
     return {id: Date.now().toString(), name: name, complete: false } 
 }
 
@@ -330,18 +266,18 @@ function render() {
     renderLists()
     renderCategories()
     const selectedList = lists.find(list => list.id === selectedListId)
-    // if no list is selcted task section will disappear
-    // else task section will be shown '' reverts it to normal
+    // if no list is selcted word section will disappear
+    // else word section will be shown '' reverts it to normal
     if(selectedListId == null) {
         listsDisplayContainer.style.display = 'none'
 
     } else {
         listsDisplayContainer.style.display = ''
-        // sets title of task area to whatever list is selected
+        // sets title of word area to whatever list is selected
         listTitle.innerText = selectedList.name
-        taskCount(selectedList)
-        clearElement(tasksContainer)
-        renderTasks(selectedList)
+        wordCount(selectedList)
+        clearElement(wordsContainer)
+        renderwords(selectedList)
 
        
         
@@ -356,41 +292,41 @@ function clearElement(element) {
     }
 }
 
-function renderTasks(selectedList) {
-    //runs for every task 
-    selectedList.tasks.forEach(task => {
+function renderwords(selectedList) {
+    //runs for every word 
+    selectedList.words.forEach(word => {
         // renders everything in template when true is added, without true would just add top most 
         // div information
-        const taskElement = document.importNode(taskTemplate.content, true)
+        const wordElement = document.importNode(wordTemplate.content, true)
 
-        const checkbox = taskElement.querySelector('input')
-        checkbox.id = task.id
-        checkbox.checked = task.complete
+        const checkbox = wordElement.querySelector('input')
+        checkbox.id = word.id
+        checkbox.checked = word.complete
 
-        const label = taskElement.querySelector('label')
-        label.htmlFor = task.id
-        label.append(task.name)
-        tasksContainer.appendChild(taskElement)
+        const label = wordElement.querySelector('label')
+        label.htmlFor = word.id
+        label.append(word.name)
+        wordsContainer.appendChild(wordElement)
     })
 }
 
-function taskCount(selectedList) {
-    // get every task that is not complete
-    const numberOfWords = selectedList.tasks.filter(task => !task.complete).length
+function wordCount(selectedList) {
+    // get every word that is not complete
+    const numberOfWords = selectedList.words.filter(word => !word.complete).length
 
 
-    // if just one task 'task' will be singular, else it will be 'tasks'
-    const taskString = numberOfWords === 1 ? "word" : "words"
-    listCount.innerText = `${numberOfWords} ${taskString}`
+    // if just one word 'word' will be singular, else it will be 'words'
+    const wordString = numberOfWords === 1 ? "word" : "words"
+    listCount.innerText = `${numberOfWords} ${wordString}`
 }
 
 function random(selectedList)  {
     
-    const wordsListLength = selectedList.tasks.filter(task => task).length
+    const wordsListLength = selectedList.words.filter(word => word).length
     const random = Math.floor(Math.random()*wordsListLength)
-    console.log(selectedList.tasks[random].name)
+    console.log(selectedList.words[random].name)
 
-    let word = (selectedList.tasks[random].name)
+    let word = (selectedList.words[random].name)
     randomWord.innerText = `${word}`
 }
 
@@ -518,7 +454,7 @@ randomWordButton.addEventListener('click', e => {
 //const timeoutAudio = document.getElementById("timeout_audio");
 
 // variable to store count
-var remainingTime = 60;
+var remainingTime = 5;
 
 // variable to store time interval
 var timer;
@@ -535,7 +471,7 @@ const startTimer = () => {
 
 const resetTimer = () => {
   clearInterval(timer)
-  remainingTime = 60;
+  remainingTime = 5;
   countdown.innerHTML = remainingTime
 }
 
@@ -606,7 +542,7 @@ const renderTime = () => {
         gameSound.pause();
         timeoutSound.play()
 
-        remainingTime = 60
+        remainingTime = 5
         selectionButton.style.display = 'none'
         randomWordButton.style.display = 'none'
     }  
