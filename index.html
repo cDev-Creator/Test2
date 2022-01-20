@@ -18,26 +18,8 @@
 
     <div class="content-container">
 
-       <!--  <div class="neon-wrapper"> -->
-         <!--    <div class="logo-container"> -->
-                <div class="logo">
-                    <b>g<span>ue</span>ss<span> it</span> <span id="puncutation"></span></b></div>
-
-                </div>
-               
-        <!--     </div>  -->
-      <!--   </div> -->
-
-       
-
-      <!--   <div class='title-score'>
-            <div class='neon-wrapper'>
-                <div class='neon-text' >
-                    <h1 class="title glow">Guess it</h1>
-                </div>
-            </div> -->
-            
-           
+        <div class="logo">
+            <b>g<span>ue</span>ss<span> it</span> <span id="puncutation"></span></b></div>
 
         </div>
        
@@ -101,15 +83,11 @@
 
         <div class="lists">
             
-            <div class="all-tasks">
+            <div class="all-words">
                 <ul class="category-list" data-lists>
 
                 </ul>
 
-                
-
-
-                
               <div class="new-list-container">
                     <form action="" data-new-list-form> 
                         <input type="text" 
@@ -123,47 +101,39 @@
             </div>
             
 
-            <div class="todo-list" data-lists-display-container>
+            <div class="all-words-list" data-lists-display-container>
                 
-                <div class="todo-header">
+                <div class="word-header">
                     <h2 class="list-title" data-list-title></h2>
-                     <div class="task-list"></div>
-                     <p class="task-count" data-list-count></p>
+                     <div class="word-list"></div>
+                     <p class="word-count" data-list-count></p>
                 </div>
-                <div class="todo-body">
-                    <div class="tasks" data-tasks>
+                <div class="words-body">
+                    <div class="words" data-words>
             
                     </div>
-                    <div class="new-task-creator">
-                        <form action="" data-new-task-form>
-                            <input type="text" data-new-task-input class="new-list" placeholder="word">
-                            <button class="plus-button task">+</button>
+                    <div class="new-word-creator">
+                        <form action="" data-new-word-form>
+                            <input type="text" data-new-word-input class="new-list" placeholder="new word">
+                            <button class="plus-button word">+</button>
                          </form>
                     </div>
                 </div>
                 <div class="delete">
-                    <button class="btn delete" data-clear-complete-tasks-button>Clear All</button>
+                    <button class="btn delete" data-clear-complete-words-button>Clear All</button>
                     <button class="btn delete" data-delete-list-button>Delete Category</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <template id ="task-template">
-        <div class="task">
+    <template id ="word-template">
+        <div class="word">
             <input type="checkbox">
             <label></label>             
         </div>
     </template>
-
-
 </body>
-
-
-
-
-
-
 
 <script defer src= "app.js"></script>
 </html>
